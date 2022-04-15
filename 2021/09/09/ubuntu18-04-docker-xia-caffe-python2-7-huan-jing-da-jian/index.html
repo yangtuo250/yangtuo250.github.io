@@ -17,7 +17,7 @@
 
 
     <title>Ubuntu18.04 docker下caffe python2.7环境搭建 | yangtuo250&#39;s blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" href="/IMG_2130.JPG">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.1.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -43,7 +47,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/IMG_2130.JPG" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">yangtuo250&#39;s blog</span>
                 </a>
@@ -120,7 +124,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/IMG_2130.JPG" class="logo-img circle responsive-img">
         
         <div class="logo-name">yangtuo250&#39;s blog</div>
         <div class="logo-desc">
@@ -458,24 +462,23 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li><a href="#%E4%B8%80-docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8">一. docker安装及使用</a></li>
-<li><a href="#%E4%BA%8C-docker%E5%AE%B9%E5%99%A8%E5%86%85%E4%BD%BF%E7%94%A8gpu">二. docker容器内使用GPU</a><ul>
-<li><a href="#1-%E5%AE%89%E8%A3%85gpu%E9%A9%B1%E5%8A%A8">1. 安装GPU驱动</a></li>
-<li><a href="#2-%E5%AE%89%E8%A3%85nvidia-container-toolkit">2. 安装Nvidia container toolkit</a></li>
+<li><a href="#一-docker安装及使用">一. docker安装及使用</a></li>
+<li><a href="#二-docker容器内使用gpu">二. docker容器内使用GPU</a><ul>
+<li><a href="#1-安装gpu驱动">1. 安装GPU驱动</a></li>
+<li><a href="#2-安装nvidia-container-toolkit">2. 安装Nvidia container toolkit</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%89-%E4%B8%8B%E8%BD%BDcaffe%E5%AE%98%E6%96%B9docker%E9%95%9C%E5%83%8F">三. 下载caffe官方docker镜像</a></li>
-<li><a href="#%E5%9B%9B-%E5%BB%BA%E7%AB%8Bdocker%E5%AE%B9%E5%99%A8">四. 建立docker容器</a></li>
+<li><a href="#三-下载caffe官方docker镜像">三. 下载caffe官方docker镜像</a></li>
+<li><a href="#四-建立docker容器">四. 建立docker容器</a></li>
 </ul>
 <span id="more"></span>
-
 <h2 id="一-docker安装及使用"><a href="#一-docker安装及使用" class="headerlink" title="一. docker安装及使用"></a>一. docker安装及使用</h2><p>参考docker官方文档</p>
 <p>安装：<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
 <p>使用：<a target="_blank" rel="noopener" href="https://docs.docker.com/get-started/">https://docs.docker.com/get-started/</a></p>
 <h2 id="二-docker容器内使用GPU"><a href="#二-docker容器内使用GPU" class="headerlink" title="二. docker容器内使用GPU"></a>二. docker容器内使用GPU</h2><h3 id="1-安装GPU驱动"><a href="#1-安装GPU驱动" class="headerlink" title="1. 安装GPU驱动"></a>1. 安装GPU驱动</h3><p>参考<a target="_blank" rel="noopener" href="https://tensorflow.google.cn/install/gpu#ubuntu_1804_cuda_110">Tensorflow官方教程GPU驱动安装</a></p>
 <h3 id="2-安装Nvidia-container-toolkit"><a href="#2-安装Nvidia-container-toolkit" class="headerlink" title="2. 安装Nvidia container toolkit"></a>2. 安装Nvidia container toolkit</h3><p>Nvidia container toolkit是英伟达官方为docker容器内使用GPU的必备组件。安装方式参考其官方文档：</p>
 <p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide</a></p>
-<h2 id="三-下载caffe官方docker镜像"><a href="#三-下载caffe官方docker镜像" class="headerlink" title="三. 下载caffe官方docker镜像"></a>三. 下载caffe官方docker镜像</h2><p>在<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/">dockerhub官网</a>搜索caffe，选择<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/r/bvlc/caffe">官方仓库</a>，按照提示进行下载。</p>
+<h2 id="三-下载caffe官方docker镜像"><a href="#三-下载caffe官方docker镜像" class="headerlink" title="三. 下载caffe官方docker镜像"></a>三. 下载caffe官方docker镜像</h2><p>在<a target="_blank" rel="noopener" href="https://registry.hub.docker.com">dockerhub官网</a>搜索caffe，选择<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/r/bvlc/caffe">官方仓库</a>，按照提示进行下载。</p>
 <h2 id="四-建立docker容器"><a href="#四-建立docker容器" class="headerlink" title="四. 建立docker容器"></a>四. 建立docker容器</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 创建容器
 docker run -itd --runtime=nvidia -v $YOUR_PROJECT_DIRECTORY:/workspace --name caffe bvlc/caffe:gpu
 # 进入容器

@@ -17,7 +17,7 @@
 
 
     <title>Hexo yilia theme 更换 &amp; 新增功能 | yangtuo250&#39;s blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" href="/IMG_2130.JPG">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.1.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -43,7 +47,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/IMG_2130.JPG" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">yangtuo250&#39;s blog</span>
                 </a>
@@ -120,7 +124,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/IMG_2130.JPG" class="logo-img circle responsive-img">
         
         <div class="logo-name">yangtuo250&#39;s blog</div>
         <div class="logo-desc">
@@ -468,9 +472,7 @@
                 <h2 id="一-更换-yilia主题"><a href="#一-更换-yilia主题" class="headerlink" title="一 更换 yilia主题"></a>一 更换 yilia主题</h2><h3 id="1-下载"><a href="#1-下载" class="headerlink" title="1 下载"></a>1 下载</h3><p>在blog root下</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/litten/hexo-theme-yilia.git themes/yilia<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <span id="more"></span>
-
 <h3 id="2-安装插件"><a href="#2-安装插件" class="headerlink" title="2 安装插件"></a>2 安装插件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i hexo-generator-json-content --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <h3 id="3-配置"><a href="#3-配置" class="headerlink" title="3 配置"></a>3 配置</h3><p>在blog root下的<code>_config.yml</code>中新增</p>
 <pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">jsonContent:
   meta: false
@@ -490,13 +492,10 @@
     excerpt: false
     categories: false
     tags: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="二-增加文章字数统计-amp-时间统计"><a href="#二-增加文章字数统计-amp-时间统计" class="headerlink" title="二 增加文章字数统计 &amp; 时间统计"></a>二 增加文章字数统计 &amp; 时间统计</h2><h3 id="1-安装插件"><a href="#1-安装插件" class="headerlink" title="1 安装插件"></a>1 安装插件</h3><p>在blog root下</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i --save hexo-wordcount<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <h3 id="2-修改配置"><a href="#2-修改配置" class="headerlink" title="2 修改配置"></a>2 修改配置</h3><p>在blog root下的<code>_config.yml</code>中新增</p>
 <pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">word_count: true<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <h3 id="3-字数-amp-时间统计"><a href="#3-字数-amp-时间统计" class="headerlink" title="3 字数 &amp; 时间统计"></a>3 字数 &amp; 时间统计</h3><p>在blog root下的<code>theme/yilia/layout/_partial/post</code>新增<code>word.ejs</code></p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token string">"margin-top:10px;"</span><span class="token operator">&gt;</span>
     <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"post-time"</span><span class="token operator">&gt;</span>
@@ -516,20 +515,16 @@
         <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>在<code>theme/yilia/layout/_partial/artical.ejs</code>中<code>/artical/div[@class="article-inner"]/header[@class="article-header"]</code>的<code>if (!post.noDate) {}</code>中增加</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span><span class="token punctuation">(</span>theme<span class="token punctuation">.</span>word_count <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>post<span class="token punctuation">.</span>no_word_count<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token operator">%</span><span class="token operator">&gt;</span>
     <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'post/word'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
 <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <h2 id="三-增加访问统计"><a href="#三-增加访问统计" class="headerlink" title="三 增加访问统计"></a>三 增加访问统计</h2><h3 id="1-网站访问统计"><a href="#1-网站访问统计" class="headerlink" title="1 网站访问统计"></a>1 网站访问统计</h3><p>在<code>theme/yilia/layout/_partial/footer.ejs</code>中增加</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script <span class="token keyword">async</span> src<span class="token operator">=</span><span class="token string">"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>并在<code>/footer/div/div/div[@class="footer-left"]</code>(在左边)或者新增<code>/footer/div/div/div[@class="footer-middle"]</code>（在中间）增加</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"busuanzi_container_site_uv"</span><span class="token operator">&gt;</span>
     有<span class="token operator">&lt;</span>span id<span class="token operator">=</span><span class="token string">"busuanzi_value_site_uv"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>人迷路了
 <span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
 <h3 id="2-文章访问统计"><a href="#2-文章访问统计" class="headerlink" title="2 文章访问统计"></a>2 文章访问统计</h3><p>在<code>theme/yilia/layout/_partial/artical.ejs</code>中<code>/artical/div[@class="article-inner"]/header[@class="article-header"]</code>中增加</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span>index <span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
     <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"archive-article-date"</span><span class="token operator">&gt;</span>
@@ -676,7 +671,8 @@
                             
 Problem 1 松鼠、熊与下雪
 1. 对于E山，有如下事实：
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|下雪)&lt;P(发现松鼠|下雪)$
+
                         
                     </div>
                     <div class="publish-info">
@@ -751,12 +747,12 @@ Problem 1 松鼠、熊与下雪
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
                     <a href="/tags/Tensorflow/">
                         <span class="chip bg-color">Tensorflow</span>
+                    </a>
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                     <a href="/tags/Tensorboard/">

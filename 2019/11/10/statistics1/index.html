@@ -17,7 +17,7 @@
 
 
     <title>statistics1 | yangtuo250&#39;s blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" href="/IMG_2130.JPG">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.1.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -43,7 +47,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/IMG_2130.JPG" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">yangtuo250&#39;s blog</span>
                 </a>
@@ -120,7 +124,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/IMG_2130.JPG" class="logo-img circle responsive-img">
         
         <div class="logo-name">yangtuo250&#39;s blog</div>
         <div class="logo-desc">
@@ -432,7 +436,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    692
+                    651
                 </div>
                 
 
@@ -458,53 +462,25 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li><a href="#problem-1-%E6%9D%BE%E9%BC%A0%E7%86%8A%E4%B8%8E%E4%B8%8B%E9%9B%AA">Problem 1 松鼠、熊与下雪</a><ul>
-<li><a href="#1-%E5%AF%B9%E4%BA%8Ee%E5%B1%B1%E6%9C%89%E5%A6%82%E4%B8%8B%E4%BA%8B%E5%AE%9E">1. 对于E山，有如下事实：</a></li>
-<li><a href="#nbspnbspnbspnbspnbspnbspnbspnbspnbspnbspp%E5%8F%91%E7%8E%B0%E7%86%8A%E4%B8%8B%E9%9B%AAp%E5%8F%91%E7%8E%B0%E6%9D%BE%E9%BC%A0%E4%B8%8B%E9%9B%AA">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$P(发现熊|下雪)&lt;P(发现松鼠|下雪)$</a></li>
-<li><a href="#nbspnbspnbspnbspnbspnbspnbspnbspnbspnbspp%E5%8F%91%E7%8E%B0%E7%86%8A%E4%B8%8D%E4%B8%8B%E9%9B%AAp%E5%8F%91%E7%8E%B0%E6%9D%BE%E9%BC%A0%E4%B8%8D%E4%B8%8B%E9%9B%AA">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$P(发现熊|不下雪)&lt;P(发现松鼠|不下雪)$</a></li>
-<li><a href="#%E8%AF%95%E9%97%AE%E8%83%BD%E5%90%A6%E6%96%AD%E8%A8%80e%E5%B1%B1%E7%9A%84p%E5%8F%91%E7%8E%B0%E7%86%8Ap%E5%8F%91%E7%8E%B0%E6%9D%BE%E9%BC%A0">试问能否断言E山的$P(发现熊)&lt;P(发现松鼠)$？</a></li>
-<li><a href="#2-%E4%B8%8Ed%E5%B1%B1%E7%9B%B8%E6%AF%94c%E5%B1%B1%E7%9A%84p%E5%8F%91%E7%8E%B0%E6%9D%BE%E9%BC%A0%E4%B8%8B%E9%9B%AA%E6%9B%B4%E9%AB%98%E5%90%8C%E6%97%B6p%E5%8F%91%E7%8E%B0%E6%9D%BE%E9%BC%A0%E4%B8%8D%E4%B8%8B%E9%9B%AA%E4%B9%9F%E6%98%AFc%E5%B1%B1%E6%9B%B4%E9%AB%98%E8%AF%95%E9%97%AE%E8%83%BD%E5%90%A6%E6%96%AD%E8%A8%80c%E5%B1%B1%E7%9A%84p%E5%8F%91%E7%8E%B0%E6%9D%BE%E9%BC%A0%E6%9B%B4%E9%AB%98">2. 与D山相比，C山的$P(发现松鼠|下雪)$更高。同时，$P(发现松鼠|不下雪)$也是C山更高。试问能否断言C山的$P(发现松鼠)$更高？</a><span id="more"></span></li>
+<li><a href="#problem-1-%e6%9d%be%e9%bc%a0%e7%86%8a%e4%b8%8e%e4%b8%8b%e9%9b%aa">Problem 1 松鼠、熊与下雪</a><ul>
+<li><a href="#1-%e5%af%b9%e4%ba%8ee%e5%b1%b1%e6%9c%89%e5%a6%82%e4%b8%8b%e4%ba%8b%e5%ae%9e">1. 对于E山，有如下事实：</a></li>
+<li><a href="#nbspnbspnbspnbspnbspnbspnbspnbspnbspnbspp%e5%8f%91%e7%8e%b0%e7%86%8a%e4%b8%8b%e9%9b%aap%e5%8f%91%e7%8e%b0%e6%9d%be%e9%bc%a0%e4%b8%8b%e9%9b%aa">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|下雪)&lt;P(发现松鼠|下雪)$</a></li>
+<li><a href="#nbspnbspnbspnbspnbspnbspnbspnbspnbspnbspp%e5%8f%91%e7%8e%b0%e7%86%8a%e4%b8%8d%e4%b8%8b%e9%9b%aap%e5%8f%91%e7%8e%b0%e6%9d%be%e9%bc%a0%e4%b8%8d%e4%b8%8b%e9%9b%aa">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|不下雪)&lt;P(发现松鼠|不下雪)$</a></li>
+<li><a href="#%e8%af%95%e9%97%ae%e8%83%bd%e5%90%a6%e6%96%ad%e8%a8%80e%e5%b1%b1%e7%9a%84p%e5%8f%91%e7%8e%b0%e7%86%8ap%e5%8f%91%e7%8e%b0%e6%9d%be%e9%bc%a0">试问能否断言E山的$P(发现熊)&lt;P(发现松鼠)$？</a></li>
+<li><a href="#2-%e4%b8%8ed%e5%b1%b1%e7%9b%b8%e6%af%94c%e5%b1%b1%e7%9a%84p%e5%8f%91%e7%8e%b0%e6%9d%be%e9%bc%a0%e4%b8%8b%e9%9b%aa%e6%9b%b4%e9%ab%98%e5%90%8c%e6%97%b6p%e5%8f%91%e7%8e%b0%e6%9d%be%e9%bc%a0%e4%b8%8d%e4%b8%8b%e9%9b%aa%e4%b9%9f%e6%98%afc%e5%b1%b1%e6%9b%b4%e9%ab%98%e8%af%95%e9%97%ae%e8%83%bd%e5%90%a6%e6%96%ad%e8%a8%80c%e5%b1%b1%e7%9a%84p%e5%8f%91%e7%8e%b0%e6%9d%be%e9%bc%a0%e6%9b%b4%e9%ab%98">2. 与D山相比，C山的$P(发现松鼠|下雪)$更高。同时，$P(发现松鼠|不下雪)$也是C山更高。试问能否断言C山的$P(发现松鼠)$更高？</a><span id="more"></span>
+</li>
 </ul>
 </li>
 </ul>
-<h2 id="Problem-1-松鼠、熊与下雪"><a href="#Problem-1-松鼠、熊与下雪" class="headerlink" title="Problem 1 松鼠、熊与下雪"></a>Problem 1 松鼠、熊与下雪</h2><h3 id="1-对于E山，有如下事实："><a href="#1-对于E山，有如下事实：" class="headerlink" title="1. 对于E山，有如下事实："></a>1. 对于E山，有如下事实：</h3><h3 id="amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-P-发现熊-下雪-lt-P-发现松鼠-下雪"><a href="#amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-P-发现熊-下雪-lt-P-发现松鼠-下雪" class="headerlink" title="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$P(发现熊|下雪)<P(发现松鼠|下雪)$"></a>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$P(发现熊|下雪)&lt;P(发现松鼠|下雪)$</h3><h3 id="amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-P-发现熊-不下雪-lt-P-发现松鼠-不下雪"><a href="#amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-amp-nbsp-P-发现熊-不下雪-lt-P-发现松鼠-不下雪" class="headerlink" title="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$P(发现熊|不下雪)<P(发现松鼠|不下雪)$"></a>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;$P(发现熊|不下雪)&lt;P(发现松鼠|不下雪)$</h3><h3 id="试问能否断言E山的-P-发现熊-lt-P-发现松鼠-？"><a href="#试问能否断言E山的-P-发现熊-lt-P-发现松鼠-？" class="headerlink" title="试问能否断言E山的$P(发现熊)<P(发现松鼠)$？"></a>试问能否断言E山的$P(发现熊)&lt;P(发现松鼠)$？</h3><p>能!</p>
-<p>$$P(下雪)+P(不下雪)=1$$</p>
-<p>$$P(发现熊,下雪)+P(发现熊,不下雪)=P(发现熊)$$</p>
-<p>$$P(发现熊,下雪)=P(发现熊|下雪)P(下雪)$$</p>
-<p>$$P(发现熊)=P(发现熊|下雪)P(下雪)+P(发现熊|不下雪)P(不下雪)$$</p>
-<p>松鼠同理</p>
+<h2 id="Problem-1-松鼠、熊与下雪"><a href="#Problem-1-松鼠、熊与下雪" class="headerlink" title="Problem 1 松鼠、熊与下雪"></a>Problem 1 松鼠、熊与下雪</h2><h3 id="1-对于E山，有如下事实："><a href="#1-对于E山，有如下事实：" class="headerlink" title="1. 对于E山，有如下事实："></a>1. 对于E山，有如下事实：</h3><h3 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-P-发现熊-下雪-lt-P-发现松鼠-下雪"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-P-发现熊-下雪-lt-P-发现松鼠-下雪" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|下雪)<P(发现松鼠|下雪)$"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|下雪)&lt;P(发现松鼠|下雪)$</h3><h3 id="nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-P-发现熊-不下雪-lt-P-发现松鼠-不下雪"><a href="#nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-nbsp-P-发现熊-不下雪-lt-P-发现松鼠-不下雪" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|不下雪)<P(发现松鼠|不下雪)$"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|不下雪)&lt;P(发现松鼠|不下雪)$</h3><h3 id="试问能否断言E山的-P-发现熊-lt-P-发现松鼠-？"><a href="#试问能否断言E山的-P-发现熊-lt-P-发现松鼠-？" class="headerlink" title="试问能否断言E山的$P(发现熊)<P(发现松鼠)$？"></a>试问能否断言E山的$P(发现熊)&lt;P(发现松鼠)$？</h3><p>能!</p>
+<script type="math/tex; mode=display">P(下雪)+P(不下雪)=1</script><script type="math/tex; mode=display">P(发现熊,下雪)+P(发现熊,不下雪)=P(发现熊)</script><script type="math/tex; mode=display">P(发现熊,下雪)=P(发现熊|下雪)P(下雪)</script><script type="math/tex; mode=display">P(发现熊)=P(发现熊|下雪)P(下雪)+P(发现熊|不下雪)P(不下雪)</script><p>松鼠同理</p>
 <h3 id="2-与D山相比，C山的-P-发现松鼠-下雪-更高。同时，-P-发现松鼠-不下雪-也是C山更高。试问能否断言C山的-P-发现松鼠-更高？"><a href="#2-与D山相比，C山的-P-发现松鼠-下雪-更高。同时，-P-发现松鼠-不下雪-也是C山更高。试问能否断言C山的-P-发现松鼠-更高？" class="headerlink" title="2. 与D山相比，C山的$P(发现松鼠|下雪)$更高。同时，$P(发现松鼠|不下雪)$也是C山更高。试问能否断言C山的$P(发现松鼠)$更高？"></a>2. 与D山相比，C山的$P(发现松鼠|下雪)$更高。同时，$P(发现松鼠|不下雪)$也是C山更高。试问能否断言C山的$P(发现松鼠)$更高？</h3><blockquote>
 <p>准备知识 辛普森悖论</p>
 <blockquote>
 <p>(wikipedia)辛普森悖论（亦称辛普森诡论）<br>当人们尝试探究两种变量（比如新生录取率与性别）是否具有相关性的时候，会分别对之进行分组研究。然而，在分组比较中都占优势的一方，在总评中有时反而是失势的一方。该现象于20世纪初就有人讨论，但一直到1951年，E.H.辛普森在他发表的论文中阐述此一现象后，该现象才算正式被描述解释。后来就以他的名字命名此悖论，即辛普森悖论。<br>为了避免辛普森悖论的出现，就需要斟酌<strong>各分组的权重</strong>，并乘以一定的系数去消除以分组数据基数差异而造成的影响。同时，我们必需清楚了解情况，以综合考虑是否存在造成此悖论的潜在因素。</p>
 </blockquote>
 </blockquote>
-<p>证伪：  </p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">$P(发现松鼠｜下雪)$</th>
-<th align="center">$P(发现松鼠｜不下雪)$</th>
-<th align="center">$P(下雪)$</th>
-<th align="center">$P(发现松鼠)$</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">C山</td>
-<td align="center">0.9</td>
-<td align="center">0.1</td>
-<td align="center">0.01</td>
-<td align="center">$0.9\times0.01+0.1\times0.99=0.108$</td>
-</tr>
-<tr>
-<td align="center">D山</td>
-<td align="center">0.5</td>
-<td align="center">0</td>
-<td align="center">0.99</td>
-<td align="center">$0.5\times0.99+0\times0.01=0.495$</td>
-</tr>
-</tbody></table>
+<p>证伪：<br>||$P(发现松鼠｜下雪)$|$P(发现松鼠｜不下雪)$|$P(下雪)$|$P(发现松鼠)$|<br>|:-:|:-:|:-:|:-:|:-:|<br>|C山|0.9|0.1|0.01|$0.9\times0.01+0.1\times0.99=0.108$|<br>|D山|0.5|0|0.99|$0.5\times0.99+0\times0.01=0.495$|</p>
 <p>Talk is cheap, show me your formula. </p>
 
                 
@@ -864,6 +840,13 @@ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 

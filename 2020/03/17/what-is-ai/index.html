@@ -17,7 +17,7 @@
 
 
     <title>What is AI? | yangtuo250&#39;s blog</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" href="/IMG_2130.JPG">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.1.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -43,7 +47,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/medias/IMG_2130.JPG" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">yangtuo250&#39;s blog</span>
                 </a>
@@ -120,7 +124,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/medias/IMG_2130.JPG" class="logo-img circle responsive-img">
         
         <div class="logo-name">yangtuo250&#39;s blog</div>
         <div class="logo-desc">
@@ -458,28 +462,28 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li><a href="#%E4%B8%80-%E6%A6%82%E5%BF%B5%E6%BE%84%E6%B8%85">一 概念澄清</a><ul>
-<li><a href="#1-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BDartificial-intelligence">1. 人工智能(Artificial Intelligence)</a></li>
-<li><a href="#2-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0machine-learning">2. 机器学习(Machine Learning)</a></li>
-<li><a href="#3-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0deep-learning">3. 深度学习(Deep Learning)</a></li>
-<li><a href="#4-%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98data-mining">4. 数据挖掘(Data Mining)</a></li>
-<li><a href="#5-%E5%85%B3%E7%B3%BB">5. 关系</a></li>
+<li><a href="#一-概念澄清">一 概念澄清</a><ul>
+<li><a href="#1-人工智能artificial-intelligence">1. 人工智能(Artificial Intelligence)</a></li>
+<li><a href="#2-机器学习machine-learning">2. 机器学习(Machine Learning)</a></li>
+<li><a href="#3-深度学习deep-learning">3. 深度学习(Deep Learning)</a></li>
+<li><a href="#4-数据挖掘data-mining">4. 数据挖掘(Data Mining)</a></li>
+<li><a href="#5-关系">5. 关系</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8C-%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD">二 人工智能</a><ul>
-<li><a href="#1-%E8%AF%84%E5%88%A4%E6%A0%87%E5%87%86----%E5%9B%BE%E7%81%B5%E6%B5%8B%E8%AF%95">1 评判标准 – 图灵测试</a></li>
-<li><a href="#2-%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86">2. 等级划分</a></li>
+<li><a href="#二-人工智能">二 人工智能</a><ul>
+<li><a href="#1-评判标准----图灵测试">1 评判标准 — 图灵测试</a></li>
+<li><a href="#2-等级划分">2. 等级划分</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%89-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">三 机器学习</a><ul>
-<li><a href="#1-%E7%B1%BB%E5%88%AB">1. 类别</a></li>
-<li><a href="#2-%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B">2. 实现过程</a></li>
-<li><a href="#i-%E6%8A%BD%E8%B1%A1">i. 抽象</a></li>
-<li><a href="#ii-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">ii. 数据处理</a></li>
-<li><a href="#iii-%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9E%8B">iii. 构建模型</a></li>
-<li><a href="#iv-%E6%A8%A1%E5%9E%8B%E6%B5%8B%E8%AF%95">iv. 模型测试</a></li>
-<li><a href="#v-%E6%A8%A1%E5%9E%8B%E8%B0%83%E4%BC%98">v. 模型调优</a></li>
-<li><a href="#vi-%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2">vi. 模型部署</a></li>
+<li><a href="#三-机器学习">三 机器学习</a><ul>
+<li><a href="#1-类别">1. 类别</a></li>
+<li><a href="#2-实现过程">2. 实现过程</a></li>
+<li><a href="#i-抽象">i. 抽象</a></li>
+<li><a href="#ii-数据处理">ii. 数据处理</a></li>
+<li><a href="#iii-构建模型">iii. 构建模型</a></li>
+<li><a href="#iv-模型测试">iv. 模型测试</a></li>
+<li><a href="#v-模型调优">v. 模型调优</a></li>
+<li><a href="#vi-模型部署">vi. 模型部署</a></li>
 </ul>
 </li>
 </ul>
@@ -489,16 +493,15 @@
 <h3 id="4-数据挖掘-Data-Mining"><a href="#4-数据挖掘-Data-Mining" class="headerlink" title="4. 数据挖掘(Data Mining)"></a>4. 数据挖掘(Data Mining)</h3><p><img src="/2020/03/17/what-is-ai/datamining.png" alt="DataMining"></p>
 <p>数据挖掘就是从海量数据中“挖掘”隐藏信息。数据是“大量的、不完全的、有噪声的、模糊的、随机的实际应用数据”，信息指的是“隐含的、规律性的、人们事先未知的、但又是潜在有用的并且最终可理解的信息和知识”。在商业环境中，企业希望让存放在数据库中的数据能“说话”，支持决策。所以，数据挖掘更偏向应用。</p>
 <span id="more"></span>
-
 <h3 id="5-关系"><a href="#5-关系" class="headerlink" title="5. 关系"></a>5. 关系</h3><p><img src="/2020/03/17/what-is-ai/summary.jpg" alt="relationship"></p>
 <p>严格意义上说，人工智能和机器学习没有直接关系，只不过目前机器学习的方法被大量的应用于解决人工智能的问题而已。目前机器学习是人工智能的一种实现方式，也是最重要的实现方式。</p>
 <p>早期的机器学习实际上是属于统计学，而非计算机科学的;而二十世纪九十年代之前的经典人工智能跟机器学习也没有关系。所以今天的AI和ML有很大的重叠，但并没有严格的从属关系。</p>
 <p>不过如果仅就计算机系内部来说，ML是属于AI的。AI今天已经变成了一个很泛泛的学科了。</p>
 <p>深度学习是机器学习现在比较火的一个方向，其本身是神经网络算法的衍生，在图像、语音等的分类和识别上取得了非常好的效果。</p>
-<h2 id="二-人工智能"><a href="#二-人工智能" class="headerlink" title="二 人工智能"></a>二 人工智能</h2><h3 id="1-评判标准-–-图灵测试"><a href="#1-评判标准-–-图灵测试" class="headerlink" title="1 评判标准 – 图灵测试"></a>1 评判标准 – 图灵测试</h3><p>图灵测试是著名科学家阿兰·麦席森·图灵于1950年提出的。其内容是，如果计算机程序能在5分钟内回答由人类测试者提出的一系列问题，且其超过30%的回答让测试者误认为是人类所答，则该程序通过测试，表明该程序拥有接近于人类的智能。</p>
+<h2 id="二-人工智能"><a href="#二-人工智能" class="headerlink" title="二 人工智能"></a>二 人工智能</h2><h3 id="1-评判标准-—-图灵测试"><a href="#1-评判标准-—-图灵测试" class="headerlink" title="1 评判标准 — 图灵测试"></a>1 评判标准 — 图灵测试</h3><p>图灵测试是著名科学家阿兰·麦席森·图灵于1950年提出的。其内容是，如果计算机程序能在5分钟内回答由人类测试者提出的一系列问题，且其超过30%的回答让测试者误认为是人类所答，则该程序通过测试，表明该程序拥有接近于人类的智能。</p>
 <p>图灵测试的参与者包含一名或多名评委，两名测试者。其中一名测试者是人类，另一名测试者是计算机程序。在评委不能直接看到测试者的情况下，由评委提出若干问题，然后根据回答做出自己的判断。</p>
 <p>图灵测试本质上要回答的问题是“机器能思考吗？”，而判断的方式是人和人人工智能对于评委来说谁是人的概率更高。</p>
-<p>完全图灵测试和反图灵测试。传统图灵测试一般避免受试者与评委产生物理沟通，而完全图灵测试则可以包含必要的人机在物理层面上的交互，比如感知能力与操纵物体的能力。反图灵测试–验证码。</p>
+<p>完全图灵测试和反图灵测试。传统图灵测试一般避免受试者与评委产生物理沟通，而完全图灵测试则可以包含必要的人机在物理层面上的交互，比如感知能力与操纵物体的能力。反图灵测试—验证码。</p>
 <h3 id="2-等级划分"><a href="#2-等级划分" class="headerlink" title="2. 等级划分"></a>2. 等级划分</h3><p>按照智能的高低，人工智能可以分为三个等级：</p>
 <p>弱人工智能(Artificial Narrow Intelligence，简称ANI)。指的是在单一领域具有一定智能的程序。现在人们所研究出的人工智能基本都属于弱人工智能这一层次，比如AlphaGo的专属领域是围棋，谷歌翻译的专属领域是翻译自然语言。但你没有办法让AlphaGo去烹饪料理，或者让谷歌翻译去击败桥牌高手。</p>
 <p>强人工智能(Artificial General Intelligence，简称AGI)。指的是拥有自我意识的程序，它们具有接近于人类的智能，可以像人类一样思考、学习、交流、解决问题。这种级别的人工智能，以现在的科技水平还远远实现不了。</p>
@@ -714,7 +717,8 @@
                             
 Problem 1 松鼠、熊与下雪
 1. 对于E山，有如下事实：
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$P(发现熊|下雪)&lt;P(发现松鼠|下雪)$
+
                         
                     </div>
                     <div class="publish-info">

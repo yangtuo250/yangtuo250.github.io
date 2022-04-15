@@ -445,7 +445,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    184
+                    198
                 </div>
                 
 
@@ -472,9 +472,10 @@
             <div id="articleContent">
                 <toc>
 
-<h2 id="1-Start-K510-build-docker-environment"><a href="#1-Start-K510-build-docker-environment" class="headerlink" title="1. Start K510 build docker environment"></a>1. Start K510 build docker environment</h2><h3 id="i-Unzip-and-prepare-local-directory"><a href="#i-Unzip-and-prepare-local-directory" class="headerlink" title="i. Unzip and prepare local directory"></a>i. Unzip and prepare local directory</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">cd k510_sdk_release_v1.4
+<h2 id="1-Start-K510-build-docker-environment"><a href="#1-Start-K510-build-docker-environment" class="headerlink" title="1. Start K510 build docker environment"></a>1. Start K510 build docker environment</h2><p>Warning: if user not in docker group, use <code>sudo docker</code> instead of <code>docker</code> all below.</p>
+<h3 id="i-Unzip-and-prepare-local-directory"><a href="#i-Unzip-and-prepare-local-directory" class="headerlink" title="i. Unzip and prepare local directory"></a>i. Unzip and prepare local directory</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">cd k510_sdk_release_v1.4
 tar xf ./k510_buildroot-release.tar.gz
-xz -d -c ./k510_docker_env.tar.xz | sudo docker load
+xz -d -c ./k510_docker_env.tar.xz | docker load
 mdkir build-cache<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="ii-Start-build-container"><a href="#ii-Start-build-container" class="headerlink" title="ii. Start build container"></a>ii. Start build container</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">docker run -itd \
 --name k510_env \

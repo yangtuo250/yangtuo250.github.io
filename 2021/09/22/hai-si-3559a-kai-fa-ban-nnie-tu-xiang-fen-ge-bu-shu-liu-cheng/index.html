@@ -1,0 +1,1194 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="海思3559a开发版nnie图像分割部署流程, yangtuo250&#39;s blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>海思3559a开发版nnie图像分割部署流程 | yangtuo250&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">yangtuo250&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">yangtuo250&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/yangtuo250" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>F**k Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/yangtuo250" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="F**k Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">海思3559a开发版nnie图像分割部署流程</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Hisiv/">
+                                <span class="chip bg-color">Hisiv</span>
+                            </a>
+                        
+                            <a href="/tags/TinyML/">
+                                <span class="chip bg-color">TinyML</span>
+                            </a>
+                        
+                            <a href="/tags/CV/">
+                                <span class="chip bg-color">CV</span>
+                            </a>
+                        
+                            <a href="/tags/Segmentation/">
+                                <span class="chip bg-color">Segmentation</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/TinyML/" class="post-category">
+                                TinyML
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-09-22
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-04-15
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.1k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <ul>
+<li><a href="#%E4%B8%80-%E7%A1%AC%E4%BB%B6">一. 硬件</a><ul>
+<li><a href="#1-%E6%9C%8D%E5%8A%A1%E5%99%A8">1. 服务器</a></li>
+<li><a href="#2-%E5%BC%80%E5%8F%91%E6%9D%BF">2. 开发板</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E7%BD%91%E7%BB%9Cenet">二. 图像分割网络ENet</a><ul>
+<li><a href="#1-%E8%AE%AD%E7%BB%83%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">1. 训练环境搭建</a></li>
+<li><a href="#2-enet%E7%9A%84caffe%E5%AE%89%E8%A3%85">2. ENet的caffe安装</a></li>
+<li><a href="#3-%E8%AE%AD%E7%BB%83">3. 训练</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2">三. 模型转换</a><ul>
+<li><a href="#1-%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%B7%A5%E5%85%B7nnie_mapper_11%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">1. 模型转换工具nnie_mapper_11使用环境配置</a></li>
+<li><a href="#2-%E6%A8%A1%E5%9E%8B%E8%BD%AC%E6%8D%A2">2. 模型转换</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81%E7%BC%96%E8%AF%91">四. 部署代码编译</a><ul>
+<li><a href="#1-%E6%B5%B7%E6%80%9D%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85">1. 海思交叉编译工具安装</a></li>
+<li><a href="#2-%E7%BC%96%E8%AF%91%E6%B5%B7%E6%80%9Dsdk">2. 编译海思SDK</a></li>
+<li><a href="#3-%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91opencv-341">3. 交叉编译OpenCV-3.4.1</a></li>
+<li><a href="#4-%E7%BC%96%E8%AF%91nnie-lite">4. 编译NNIE-lite</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E9%83%A8%E7%BD%B2">五. 部署</a><ul>
+<li><a href="#1-%E5%9C%A8%E6%9D%BF%E5%AD%90%E4%B8%8A%E7%BC%96%E8%AF%91opencv-341">1. 在板子上编译OpenCV-3.4.1</a></li>
+<li><a href="#2-%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95">2. 运行测试</a></li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="一-硬件"><a href="#一-硬件" class="headerlink" title="一. 硬件"></a>一. 硬件</h2><h3 id="1-服务器"><a href="#1-服务器" class="headerlink" title="1. 服务器"></a>1. 服务器</h3><p>硬件: X86_64, Nvidia Tesla T4</p>
+<p>操作系统: Ubuntu 18.04.5</p>
+<h3 id="2-开发板"><a href="#2-开发板" class="headerlink" title="2. 开发板"></a>2. 开发板</h3><p>硬件: 搭载海思Hi3559av100的IVP3559a开发板</p>
+<p>操作系统: Ubuntu 18.04 arm(订制版，具体修改未知)</p>
+<h2 id="二-图像分割网络ENet"><a href="#二-图像分割网络ENet" class="headerlink" title="二. 图像分割网络ENet"></a>二. 图像分割网络ENet</h2><h3 id="1-训练环境搭建"><a href="#1-训练环境搭建" class="headerlink" title="1. 训练环境搭建"></a>1. 训练环境搭建</h3><p>在GPU服务器上训练，首先安装Nvidia显卡驱动nvidia-driver-xxx。然后安装常见开发工具<code>git</code> <code>cmake</code>等。</p>
+<p>为了使用python训练，及安装旧版本cuda(8.0)，建议使用conda虚拟环境避免破坏系统python和其他cuda lib版本。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n caffepy2 <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">2.7</span> pip
+conda activate caffepy2
+conda <span class="token function">install</span> -c marta-sd <span class="token assign-left variable">cudatoolkit</span><span class="token operator">=</span><span class="token number">8.0</span> <span class="token assign-left variable">cudnn</span><span class="token operator">=</span><span class="token number">5.1</span>
+conda <span class="token function">install</span> <span class="token assign-left variable">h5py</span><span class="token operator">=</span><span class="token number">2.7</span> <span class="token assign-left variable">opencv</span><span class="token operator">=</span><span class="token number">3.4</span>.1 numpy scikit-image protobuf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-ENet的caffe安装"><a href="#2-ENet的caffe安装" class="headerlink" title="2. ENet的caffe安装"></a>2. ENet的caffe安装</h3><p>由于原版caffe不支持ENet某些层，所以，需要重新编译caffe ENet修改过的caffe。参考<a target="_blank" rel="noopener" href="https://jin-zhe.github.io/guides/installing-caffe2-with-cuda-in-conda/">Installing Caffe2 with CUDA in Conda</a></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone --recursive https://github.com/yangtuo250/ENet.git -b develop
+<span class="token builtin class-name">cd</span> ENet/caffe-enet
+<span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
+<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/Tutorial/build_caffe.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-训练"><a href="#3-训练" class="headerlink" title="3. 训练"></a>3. 训练</h3><p>参考<a target="_blank" rel="noopener" href="https://github.com/yangtuo250/ENet/blob/develop/Tutorial/README.md">Tutorial on how to train and test ENet on Cityscapes dataset</a></p>
+<p>需要注意的点：</p>
+<ol>
+<li>prototxts的首层layer的batch_size根据自身硬件条件调整，避免太小影响BatchNorm或者太大导致OOM</li>
+<li>如使用class weighting，参考Tutorial中<code>calculate_class_weighting.py</code>的使用方式，将结果复制到loss层-&gt;loss_param下，修改原<code>weight_by_label_freqs</code>为True</li>
+<li>此版本为了配合nnie_mapper，将<a target="_blank" rel="noopener" href="https://github.com/TimoSaemann/ENet">原版</a>中<em>Deconv层和Concat层后的</em>BN层修改为正常caffe的BatchNorm+Scale层（其他BN层会在执行<code>BN-absorber-enet.py</code>后被融合到Conv层，所以不需要修改），否则在nnie转换中会出现不支持参数</li>
+</ol>
+<h2 id="三-模型转换"><a href="#三-模型转换" class="headerlink" title="三. 模型转换"></a>三. 模型转换</h2><h3 id="1-模型转换工具nnie-mapper-11使用环境配置"><a href="#1-模型转换工具nnie-mapper-11使用环境配置" class="headerlink" title="1. 模型转换工具nnie_mapper_11使用环境配置"></a>1. 模型转换工具nnie_mapper_11使用环境配置</h3><p>通过<code>readelf -d ENet/final_model_weights/nnie_mapper_11</code>得知，需要<code>libprotobuf.so.3.6.1</code> <code>libopencv_core.so.3.4</code>。参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/racesu/article/details/107045858">NNIE模型转换环境搭建</a>可知，<strong>需要gcc(g++)-4.8</strong>编译protobuf-3.6.1和OpenCV-3.4，OpenCV版本经多次测试，最终使用3.4.4版本进行编译（兼容py2并不会导致nnie_mapper_11莫名其妙的依赖问题）。</p>
+<p>依然使用conda配置环境</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone https://github.com/yangtuo250/NNIE-lite.git -b nnie11
+
+conda create -n nnie11 <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">2</span> pip
+conda activate nnie11
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gcc-4.8 g++-4.8
+<span class="token function">sudo</span> update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 <span class="token number">70</span>
+<span class="token function">sudo</span> update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 <span class="token number">70</span>
+<span class="token function">sudo</span> update-alternatives --config gcc
+<span class="token function">sudo</span> update-alternatives --config g++
+
+<span class="token function">git</span> clone https://github.com/opencv/opencv
+<span class="token builtin class-name">cd</span> opencv <span class="token operator">&amp;&amp;</span> <span class="token function">git</span> checkout <span class="token number">3.4</span>.4 <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
+<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/NNIE-lite/build_opencv/build_opencv_nnie.sh
+<span class="token function">make</span> -j
+<span class="token function">make</span> <span class="token function">install</span>
+
+<span class="token function">git</span> clone https://github.com/protocolbuffers/protobuf.git
+<span class="token builtin class-name">cd</span> protobuf <span class="token operator">&amp;&amp;</span> <span class="token function">git</span> checkout <span class="token number">3.6</span>.1 <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
+cmake <span class="token punctuation">..</span>
+<span class="token function">make</span> -j
+<span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-模型转换"><a href="#2-模型转换" class="headerlink" title="2. 模型转换"></a>2. 模型转换</h3><p><br>修改<code>ENet/final_model_weights</code>下<code>image_ref_list.txt</code>中图像地址到自己数据集的测试集，并且修改<code>model_inst.cfg</code>中caffe模型的位置</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">./nnie_mapper_11 model_inst.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="四-部署代码编译"><a href="#四-部署代码编译" class="headerlink" title="四. 部署代码编译"></a>四. 部署代码编译</h2><p><em><strong>此方法较为繁琐，先在X86下交叉编译，然后部署到arm。理论上可以全部在开发板的arm环境下完成所有编译过程，未测试</strong></em></p>
+<h3 id="1-海思交叉编译工具安装"><a href="#1-海思交叉编译工具安装" class="headerlink" title="1. 海思交叉编译工具安装"></a>1. 海思交叉编译工具安装</h3><p>参考《Hi3559AV100ES SDK 安装及升级使用说明.pdf》安装海思三个arm编译器。</p>
+<h3 id="2-编译海思SDK"><a href="#2-编译海思SDK" class="headerlink" title="2. 编译海思SDK"></a>2. 编译海思SDK</h3><p>版本<code>Hi3559AV100_SDK_V2.0.3.1</code>。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> Hi3559AV100_SDK_V2.0.3.1/ <span class="token operator">&amp;&amp;</span> ./sdk.unpack
+<span class="token builtin class-name">cd</span> mpp/sample/svp/multi-core/nnie
+<span class="token function">make</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/out/linux/multi-core/lib
+<span class="token function">rm</span> NNIE-lite/third_party/hisi/lib/*
+<span class="token function">cp</span> * NNIE-lite/third_party/hisi/lib <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-交叉编译OpenCV-3-4-1"><a href="#3-交叉编译OpenCV-3-4-1" class="headerlink" title="3. 交叉编译OpenCV-3.4.1"></a>3. 交叉编译OpenCV-3.4.1</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone https://github.com/opencv/opencv
+<span class="token builtin class-name">cd</span> opencv <span class="token operator">&amp;&amp;</span> <span class="token function">git</span> checkout <span class="token number">3.4</span>.1 <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
+./NNIE-lite/build_opencv/build_opencv_himix100.sh
+<span class="token function">make</span> -j
+<span class="token function">rm</span> NNIE-lite/third_party/opencv-3.4.1/install_hisi/lib/*
+<span class="token function">cp</span> lib/* NNIE-lite/third_party/opencv-3.4.1/install_hisi/lib/ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-编译NNIE-lite"><a href="#4-编译NNIE-lite" class="headerlink" title="4. 编译NNIE-lite"></a>4. 编译NNIE-lite</h3><p>修改NNIE-lite中的<code>CMakeList.txt</code>，将<code>CMAKE_C_COMPILER</code> <code>CMAKE_CXX_COMPILER</code> <code>CMAKE_C_STRIP</code>修改为海思的编译器名称<code>aarch64-himix100-linux-*</code></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> NNIE-lite
+mdkir build
+<span class="token builtin class-name">cd</span> build
+cmake <span class="token punctuation">..</span>
+<span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>将编译好的NNIE-lite传输到海思开发板</p>
+<h2 id="五-部署"><a href="#五-部署" class="headerlink" title="五. 部署"></a>五. 部署</h2><h3 id="1-在板子上编译OpenCV-3-4-1"><a href="#1-在板子上编译OpenCV-3-4-1" class="headerlink" title="1. 在板子上编译OpenCV-3.4.1"></a>1. 在板子上编译OpenCV-3.4.1</h3><p>编译过程同，cmake命令参考<a target="_blank" rel="noopener" href="https://github.com/yangtuo250/NNIE-lite/blob/nnie11/build_opencv/build_opencv_hisiboard.sh">build_opencv_hisiboard.sh</a>，注意最后要make install</p>
+<h3 id="2-运行测试"><a href="#2-运行测试" class="headerlink" title="2. 运行测试"></a>2. 运行测试</h3><p>在板子上，<em>需要root权限</em></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> NNIE-lite <span class="token operator">&amp;&amp;</span> ./run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">yangtuo250</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://yangtuo250.github.io/2021/09/22/hai-si-3559a-kai-fa-ban-nnie-tu-xiang-fen-ge-bu-shu-liu-cheng/">https://yangtuo250.github.io/2021/09/22/hai-si-3559a-kai-fa-ban-nnie-tu-xiang-fen-ge-bu-shu-liu-cheng/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">yangtuo250</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Hisiv/">
+                                    <span class="chip bg-color">Hisiv</span>
+                                </a>
+                            
+                                <a href="/tags/TinyML/">
+                                    <span class="chip bg-color">TinyML</span>
+                                </a>
+                            
+                                <a href="/tags/CV/">
+                                    <span class="chip bg-color">CV</span>
+                                </a>
+                            
+                                <a href="/tags/Segmentation/">
+                                    <span class="chip bg-color">Segmentation</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/09/22/hai-si-3559a-kai-fa-ban-nnie-tu-xiang-fen-ge-bu-shu-liu-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="海思3559a开发版nnie图像分割部署流程">
+                        
+                        <span class="card-title">海思3559a开发版nnie图像分割部署流程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+一. 硬件
+1. 服务器
+2. 开发板
+
+
+二. 图像分割网络ENet
+1. 训练环境搭建
+2. ENet的caffe安装
+3. 训练
+
+
+三. 模型转换
+1. 模型转换工具nnie_mapper_11使用环境配置
+2. 模型转换
+
+
+四
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/TinyML/" class="post-category">
+                                    TinyML
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hisiv/">
+                        <span class="chip bg-color">Hisiv</span>
+                    </a>
+                    
+                    <a href="/tags/TinyML/">
+                        <span class="chip bg-color">TinyML</span>
+                    </a>
+                    
+                    <a href="/tags/CV/">
+                        <span class="chip bg-color">CV</span>
+                    </a>
+                    
+                    <a href="/tags/Segmentation/">
+                        <span class="chip bg-color">Segmentation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/09/09/ubuntu18-04-docker-xia-caffe-python2-7-huan-jing-da-jian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Ubuntu18.04 docker下caffe python2.7环境搭建">
+                        
+                        <span class="card-title">Ubuntu18.04 docker下caffe python2.7环境搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+一. docker安装及使用
+二. docker容器内使用GPU
+1. 安装GPU驱动
+2. 安装Nvidia container toolkit
+
+
+三. 下载caffe官方docker镜像
+四. 建立docker容器
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/devops/" class="post-category">
+                                    devops
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/devops/">
+                        <span class="chip bg-color">devops</span>
+                    </a>
+                    
+                    <a href="/tags/deep-learning/">
+                        <span class="chip bg-color">deep-learning</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">yangtuo250</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/yangtuo250" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:506680965@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=506680965" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 506680965" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

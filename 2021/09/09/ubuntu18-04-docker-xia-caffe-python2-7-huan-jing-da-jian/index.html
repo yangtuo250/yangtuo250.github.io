@@ -269,6 +269,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -479,10 +492,10 @@
 <h3 id="2-安装Nvidia-container-toolkit"><a href="#2-安装Nvidia-container-toolkit" class="headerlink" title="2. 安装Nvidia container toolkit"></a>2. 安装Nvidia container toolkit</h3><p>Nvidia container toolkit是英伟达官方为docker容器内使用GPU的必备组件。安装方式参考其官方文档：</p>
 <p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#install-guide</a></p>
 <h2 id="三-下载caffe官方docker镜像"><a href="#三-下载caffe官方docker镜像" class="headerlink" title="三. 下载caffe官方docker镜像"></a>三. 下载caffe官方docker镜像</h2><p>在<a target="_blank" rel="noopener" href="https://registry.hub.docker.com">dockerhub官网</a>搜索caffe，选择<a target="_blank" rel="noopener" href="https://registry.hub.docker.com/r/bvlc/caffe">官方仓库</a>，按照提示进行下载。</p>
-<h2 id="四-建立docker容器"><a href="#四-建立docker容器" class="headerlink" title="四. 建立docker容器"></a>四. 建立docker容器</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 创建容器</span>
-<span class="token function">docker</span> run -itd --runtime<span class="token operator">=</span>nvidia -v <span class="token variable">$YOUR_PROJECT_DIRECTORY</span>:/workspace --name caffe bvlc/caffe:gpu
-<span class="token comment"># 进入容器</span>
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it caffe <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="四-建立docker容器"><a href="#四-建立docker容器" class="headerlink" title="四. 建立docker容器"></a>四. 建立docker容器</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 创建容器
+docker run -itd --runtime=nvidia -v $YOUR_PROJECT_DIRECTORY:/workspace --name caffe bvlc/caffe:gpu
+# 进入容器
+docker exec -it caffe bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

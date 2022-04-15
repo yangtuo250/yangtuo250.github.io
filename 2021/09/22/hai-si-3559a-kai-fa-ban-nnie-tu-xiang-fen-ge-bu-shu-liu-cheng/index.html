@@ -269,6 +269,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '4bf43c432a089288b69bbe566883f0ebb261bcac5f912f441b93e95cf8fd662f';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -506,15 +519,15 @@
 <p>操作系统: Ubuntu 18.04 arm(订制版，具体修改未知)</p>
 <h2 id="二-图像分割网络ENet"><a href="#二-图像分割网络ENet" class="headerlink" title="二. 图像分割网络ENet"></a>二. 图像分割网络ENet</h2><h3 id="1-训练环境搭建"><a href="#1-训练环境搭建" class="headerlink" title="1. 训练环境搭建"></a>1. 训练环境搭建</h3><p>在GPU服务器上训练，首先安装Nvidia显卡驱动nvidia-driver-xxx。然后安装常见开发工具<code>git</code> <code>cmake</code>等。</p>
 <p>为了使用python训练，及安装旧版本cuda(8.0)，建议使用conda虚拟环境避免破坏系统python和其他cuda lib版本。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n caffepy2 <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">2.7</span> pip
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">conda create -n caffepy2 python=2.7 pip
 conda activate caffepy2
-conda <span class="token function">install</span> -c marta-sd <span class="token assign-left variable">cudatoolkit</span><span class="token operator">=</span><span class="token number">8.0</span> <span class="token assign-left variable">cudnn</span><span class="token operator">=</span><span class="token number">5.1</span>
-conda <span class="token function">install</span> <span class="token assign-left variable">h5py</span><span class="token operator">=</span><span class="token number">2.7</span> <span class="token assign-left variable">opencv</span><span class="token operator">=</span><span class="token number">3.4</span>.1 numpy scikit-image protobuf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+conda install -c marta-sd cudatoolkit=8.0 cudnn=5.1
+conda install h5py=2.7 opencv=3.4.1 numpy scikit-image protobuf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-ENet的caffe安装"><a href="#2-ENet的caffe安装" class="headerlink" title="2. ENet的caffe安装"></a>2. ENet的caffe安装</h3><p>由于原版caffe不支持ENet某些层，所以，需要重新编译caffe ENet修改过的caffe。参考<a target="_blank" rel="noopener" href="https://jin-zhe.github.io/guides/installing-caffe2-with-cuda-in-conda/">Installing Caffe2 with CUDA in Conda</a></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone --recursive https://github.com/yangtuo250/ENet.git -b develop
-<span class="token builtin class-name">cd</span> ENet/caffe-enet
-<span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
-<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/Tutorial/build_caffe.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone --recursive https://github.com/yangtuo250/ENet.git -b develop
+cd ENet/caffe-enet
+mkdir build &amp;&amp; cd build
+../../Tutorial/build_caffe.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-训练"><a href="#3-训练" class="headerlink" title="3. 训练"></a>3. 训练</h3><p>参考<a target="_blank" rel="noopener" href="https://github.com/yangtuo250/ENet/blob/develop/Tutorial/README.md">Tutorial on how to train and test ENet on Cityscapes dataset</a></p>
 <p>需要注意的点：</p>
 <ol>
@@ -524,54 +537,54 @@ conda <span class="token function">install</span> <span class="token assign-left
 </ol>
 <h2 id="三-模型转换"><a href="#三-模型转换" class="headerlink" title="三. 模型转换"></a>三. 模型转换</h2><h3 id="1-模型转换工具nnie-mapper-11使用环境配置"><a href="#1-模型转换工具nnie-mapper-11使用环境配置" class="headerlink" title="1. 模型转换工具nnie_mapper_11使用环境配置"></a>1. 模型转换工具nnie_mapper_11使用环境配置</h3><p>通过<code>readelf -d ENet/final_model_weights/nnie_mapper_11</code>得知，需要<code>libprotobuf.so.3.6.1</code> <code>libopencv_core.so.3.4</code>。参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/racesu/article/details/107045858">NNIE模型转换环境搭建</a>可知，<strong>需要gcc(g++)-4.8</strong>编译protobuf-3.6.1和OpenCV-3.4，OpenCV版本经多次测试，最终使用3.4.4版本进行编译（兼容py2并不会导致nnie_mapper_11莫名其妙的依赖问题）。</p>
 <p>依然使用conda配置环境</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone https://github.com/yangtuo250/NNIE-lite.git -b nnie11
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https://github.com/yangtuo250/NNIE-lite.git -b nnie11
 
-conda create -n nnie11 <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">2</span> pip
+conda create -n nnie11 python=2 pip
 conda activate nnie11
-<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> gcc-4.8 g++-4.8
-<span class="token function">sudo</span> update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 <span class="token number">70</span>
-<span class="token function">sudo</span> update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 <span class="token number">70</span>
-<span class="token function">sudo</span> update-alternatives --config gcc
-<span class="token function">sudo</span> update-alternatives --config g++
+sudo apt install gcc-4.8 g++-4.8
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 70
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 70
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++
 
-<span class="token function">git</span> clone https://github.com/opencv/opencv
-<span class="token builtin class-name">cd</span> opencv <span class="token operator">&amp;&amp;</span> <span class="token function">git</span> checkout <span class="token number">3.4</span>.4 <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
-<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/NNIE-lite/build_opencv/build_opencv_nnie.sh
-<span class="token function">make</span> -j
-<span class="token function">make</span> <span class="token function">install</span>
+git clone https://github.com/opencv/opencv
+cd opencv &amp;&amp; git checkout 3.4.4 &amp;&amp; mkdir build &amp;&amp; cd build
+../../NNIE-lite/build_opencv/build_opencv_nnie.sh
+make -j
+make install
 
-<span class="token function">git</span> clone https://github.com/protocolbuffers/protobuf.git
-<span class="token builtin class-name">cd</span> protobuf <span class="token operator">&amp;&amp;</span> <span class="token function">git</span> checkout <span class="token number">3.6</span>.1 <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
-cmake <span class="token punctuation">..</span>
-<span class="token function">make</span> -j
-<span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+git clone https://github.com/protocolbuffers/protobuf.git
+cd protobuf &amp;&amp; git checkout 3.6.1 &amp;&amp; mkdir build &amp;&amp; cd build
+cmake ..
+make -j
+make install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="2-模型转换"><a href="#2-模型转换" class="headerlink" title="2. 模型转换"></a>2. 模型转换</h3><p><br>修改<code>ENet/final_model_weights</code>下<code>image_ref_list.txt</code>中图像地址到自己数据集的测试集，并且修改<code>model_inst.cfg</code>中caffe模型的位置</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">./nnie_mapper_11 model_inst.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="四-部署代码编译"><a href="#四-部署代码编译" class="headerlink" title="四. 部署代码编译"></a>四. 部署代码编译</h2><p><strong><em>此方法较为繁琐，先在X86下交叉编译，然后部署到arm。理论上可以全部在开发板的arm环境下完成所有编译过程，未测试</em></strong></p>
 <h3 id="1-海思交叉编译工具安装"><a href="#1-海思交叉编译工具安装" class="headerlink" title="1. 海思交叉编译工具安装"></a>1. 海思交叉编译工具安装</h3><p>参考《Hi3559AV100ES SDK 安装及升级使用说明.pdf》安装海思三个arm编译器。</p>
 <h3 id="2-编译海思SDK"><a href="#2-编译海思SDK" class="headerlink" title="2. 编译海思SDK"></a>2. 编译海思SDK</h3><p>版本<code>Hi3559AV100_SDK_V2.0.3.1</code>。</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> Hi3559AV100_SDK_V2.0.3.1/ <span class="token operator">&amp;&amp;</span> ./sdk.unpack
-<span class="token builtin class-name">cd</span> mpp/sample/svp/multi-core/nnie
-<span class="token function">make</span>
-<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/out/linux/multi-core/lib
-<span class="token function">rm</span> NNIE-lite/third_party/hisi/lib/*
-<span class="token function">cp</span> * NNIE-lite/third_party/hisi/lib <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3-交叉编译OpenCV-3-4-1"><a href="#3-交叉编译OpenCV-3-4-1" class="headerlink" title="3. 交叉编译OpenCV-3.4.1"></a>3. 交叉编译OpenCV-3.4.1</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone https://github.com/opencv/opencv
-<span class="token builtin class-name">cd</span> opencv <span class="token operator">&amp;&amp;</span> <span class="token function">git</span> checkout <span class="token number">3.4</span>.1 <span class="token operator">&amp;&amp;</span> <span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd Hi3559AV100_SDK_V2.0.3.1/ &amp;&amp; ./sdk.unpack
+cd mpp/sample/svp/multi-core/nnie
+make
+cd ../../../../out/linux/multi-core/lib
+rm NNIE-lite/third_party/hisi/lib/*
+cp * NNIE-lite/third_party/hisi/lib <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-交叉编译OpenCV-3-4-1"><a href="#3-交叉编译OpenCV-3-4-1" class="headerlink" title="3. 交叉编译OpenCV-3.4.1"></a>3. 交叉编译OpenCV-3.4.1</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https://github.com/opencv/opencv
+cd opencv &amp;&amp; git checkout 3.4.1 &amp;&amp; mkdir build &amp;&amp; cd build
 ./NNIE-lite/build_opencv/build_opencv_himix100.sh
-<span class="token function">make</span> -j
-<span class="token function">rm</span> NNIE-lite/third_party/opencv-3.4.1/install_hisi/lib/*
-<span class="token function">cp</span> lib/* NNIE-lite/third_party/opencv-3.4.1/install_hisi/lib/ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+make -j
+rm NNIE-lite/third_party/opencv-3.4.1/install_hisi/lib/*
+cp lib/* NNIE-lite/third_party/opencv-3.4.1/install_hisi/lib/ <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="4-编译NNIE-lite"><a href="#4-编译NNIE-lite" class="headerlink" title="4. 编译NNIE-lite"></a>4. 编译NNIE-lite</h3><p>修改NNIE-lite中的<code>CMakeList.txt</code>，将<code>CMAKE_C_COMPILER</code> <code>CMAKE_CXX_COMPILER</code> <code>CMAKE_C_STRIP</code>修改为海思的编译器名称<code>aarch64-himix100-linux-*</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> NNIE-lite
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd NNIE-lite
 mdkir build
-<span class="token builtin class-name">cd</span> build
-cmake <span class="token punctuation">..</span>
-<span class="token function">make</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+cd build
+cmake ..
+make<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>将编译好的NNIE-lite传输到海思开发板</p>
 <h2 id="五-部署"><a href="#五-部署" class="headerlink" title="五. 部署"></a>五. 部署</h2><h3 id="1-在板子上编译OpenCV-3-4-1"><a href="#1-在板子上编译OpenCV-3-4-1" class="headerlink" title="1. 在板子上编译OpenCV-3.4.1"></a>1. 在板子上编译OpenCV-3.4.1</h3><p>编译过程同，cmake命令参考<a target="_blank" rel="noopener" href="https://github.com/yangtuo250/NNIE-lite/blob/nnie11/build_opencv/build_opencv_hisiboard.sh">build_opencv_hisiboard.sh</a>，注意最后要make install</p>
 <h3 id="2-运行测试"><a href="#2-运行测试" class="headerlink" title="2. 运行测试"></a>2. 运行测试</h3><p>在板子上，<em>需要root权限</em></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> NNIE-lite <span class="token operator">&amp;&amp;</span> ./run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd NNIE-lite &amp;&amp; ./run.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -693,47 +706,29 @@ cmake <span class="token punctuation">..</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/09/22/hai-si-3559a-kai-fa-ban-nnie-tu-xiang-fen-ge-bu-shu-liu-cheng/">
+                <a href="/2022/04/16/kendryte-k510-bian-yi-huan-jing-da-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="海思3559a开发版nnie图像分割部署流程">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Kendryte K510 编译环境搭建">
                         
-                        <span class="card-title">海思3559a开发版nnie图像分割部署流程</span>
+                        <span class="card-title">Kendryte K510 编译环境搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-一. 硬件
-1. 服务器
-2. 开发板
-
-
-二. 图像分割网络ENet
-1. 训练环境搭建
-2. ENet的caffe安装
-3. 训练
-
-
-三. 模型转换
-1. 模型转换工具nnie_mapper_11使用环境配置
-2. 模型转换
-
-
-四
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -746,24 +741,11 @@ cmake <span class="token punctuation">..</span>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hisiv/">
-                        <span class="chip bg-color">Hisiv</span>
-                    </a>
-                    
-                    <a href="/tags/TinyML/">
-                        <span class="chip bg-color">TinyML</span>
-                    </a>
-                    
-                    <a href="/tags/CV/">
-                        <span class="chip bg-color">CV</span>
-                    </a>
-                    
-                    <a href="/tags/Segmentation/">
-                        <span class="chip bg-color">Segmentation</span>
+                    <a href="/tags/Kendryte-K510/">
+                        <span class="chip bg-color">Kendryte K510</span>
                     </a>
                     
                 </div>

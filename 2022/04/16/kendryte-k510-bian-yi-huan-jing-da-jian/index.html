@@ -445,7 +445,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    198
+                    211
                 </div>
                 
 
@@ -472,7 +472,7 @@
             <div id="articleContent">
                 <toc>
 
-<h2 id="1-Start-K510-build-docker-environment"><a href="#1-Start-K510-build-docker-environment" class="headerlink" title="1. Start K510 build docker environment"></a>1. Start K510 build docker environment</h2><p>Warning: if user not in docker group, use <code>sudo docker</code> instead of <code>docker</code> all below.</p>
+<h2 id="1-Start-K510-build-docker-environment"><a href="#1-Start-K510-build-docker-environment" class="headerlink" title="1. Start K510 build docker environment"></a>1. Start K510 build docker environment</h2><p>Warning: if user not in docker group, use <code>sudo docker</code> instead of <code>docker</code> all below. Or add current user to docker group by <code>sudo usermod -aG docker $(whoami)</code></p>
 <h3 id="i-Unzip-and-prepare-local-directory"><a href="#i-Unzip-and-prepare-local-directory" class="headerlink" title="i. Unzip and prepare local directory"></a>i. Unzip and prepare local directory</h3><pre class="line-numbers language-Shell" data-language="Shell"><code class="language-Shell">cd k510_sdk_release_v1.4
 tar xf ./k510_buildroot-release.tar.gz
 xz -d -c ./k510_docker_env.tar.xz | docker load
